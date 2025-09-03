@@ -1,5 +1,5 @@
 # Book Notes
-This web application is used to store your book notes.
+This web application is used to store your book notes, reviews and rating.
 ## How to Run the Server
 ```
 npm i
