@@ -1,4 +1,5 @@
 # Book Notes
+This web application is used to store your book notes.
 ## How to Run the Server
 ```
 npm i
