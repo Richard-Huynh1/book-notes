@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Book notes.">
+  <meta name="keywords" content="book,notes">
+  <meta name="author" content="Richard Huynh">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Notes</title>
+</head>
+<body>
+  <a href="/">Back to home page</a>
+  <h2><%= book.title %></h2>
+  <img src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg">
+  <p><%= book.rating %>/10</p>
+  <p><%= book.review %></p>
+  <h3>Book Notes</h3>
+  <p><%= book.notes %></p>
+</body>
+</html>

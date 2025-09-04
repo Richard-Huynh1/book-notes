@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "This web application is used to store your book notes.\r ## How to Run the Server\r ```\r npm i\r node index.js\r ```",
   "main": "index.js",
-  "devDependencies": {},
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.10",
-    "expres": "^0.0.5",
+    "express": "^5.1.0",
     "pg": "^8.16.3"
   }
 }

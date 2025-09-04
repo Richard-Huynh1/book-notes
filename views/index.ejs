@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Book notes.">
+  <meta name="keywords" content="book,notes">
+  <meta name="author" content="Richard Huynh">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Notes</title>
+</head>
+<body>
+  <h1>Book Notes</h1>
+  <hr>
+  <% books.forEach((book) => { %>
+    <a href="/reviews/<%= book.id %>"><%= book.title %></a>
+    <img src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg">
+    <p><%= book.rating %>/10</p>
+    <p><%= book.review %></p>
+  <% }) %>
+  <form method="post">
+    <input id="title" name="title" placeholder="Book title" hidden="true">
+    <input id="isbn" name="isbn" placeholder="ISBN" hidden="true">
+    <textarea id="review" name="review" placeholder="Book review" hidden="true"></textarea>
+    <textarea id="notes" name="notes" placeholder="Book notes" hidden="true"></textarea>
+    <input id="submit" type="submit" value="Submit" hidden="true">
+  </form>
+  <button id="add-btn" onclick="handler()">Add book</button>
+  <script>
+    function handler() {
+      document.getElementById("title").hidden = false;
+      document.getElementById("isbn").hidden = false;
+      document.getElementById("review").hidden = false;
+      document.getElementById("notes").hidden = false;
+      document.getElementById("submit").hidden = false;
+      document.getElementById("add-btn").hidden = true;
+    }
+  </script>
+</body>
+</html>
