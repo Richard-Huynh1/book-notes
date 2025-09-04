@@ -20,6 +20,7 @@
   <form method="post">
     <input id="title" name="title" placeholder="Book title" hidden="true">
     <input id="isbn" name="isbn" placeholder="ISBN" hidden="true">
+    <input id="rating" name="rating" placeholder="Book rating out of 10" hidden="true">
     <textarea id="review" name="review" placeholder="Book review" hidden="true"></textarea>
     <textarea id="notes" name="notes" placeholder="Book notes" hidden="true"></textarea>
     <input id="submit" type="submit" value="Submit" hidden="true">
@@ -29,6 +30,7 @@
     function handler() {
       document.getElementById("title").hidden = false;
       document.getElementById("isbn").hidden = false;
+      document.getElementById("rating").hidden = false;
       document.getElementById("review").hidden = false;
       document.getElementById("notes").hidden = false;
       document.getElementById("submit").hidden = false;
