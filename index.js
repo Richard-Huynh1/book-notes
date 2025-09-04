@@ -62,6 +62,17 @@ app.get("/reviews/:id", (req, res) => {
   res.render("review.ejs", { book: foundBook });
 });
 
+app.post("/delete", async (req, res) => {
+  const id = parseInt(req.params.id);
+  console.log(id);
+  try {
+    await db.query("DELETE FROM notes WHERE id = $1", [id]);
+  } catch (err) {
+    console.log(err.stack);
+  }
+  res.redirect("/");
+});
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
 })

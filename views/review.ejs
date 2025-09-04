@@ -10,11 +10,16 @@
 </head>
 <body>
   <a href="/">Back to home page</a>
+
   <h2><%= book.title %></h2>
   <img src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg">
   <p><%= book.rating %>/10</p>
   <p><%= book.review %></p>
   <h3>Book Notes</h3>
   <p><%= book.notes %></p>
+
+  <form action="/delete" method="post">
+    <input type="submit" value="Delete book">
+  </form>
 </body>
 </html>
