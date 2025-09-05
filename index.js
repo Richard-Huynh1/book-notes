@@ -56,10 +56,28 @@ app.post("/", async (req, res) => {
   res.redirect("/");
 });
 
-app.get("/reviews/:id", (req, res) => {
+app.get("/reviews/:id", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * from notes");
+    books = result.rows;
+  } catch (err) {
+    console.log(err.stack);
+  }
   const id = parseInt(req.params.id);
   const foundBook = books.find((book) => book.id === id);
   res.render("review.ejs", { book: foundBook });
+});
+
+app.post("/reviews/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
+  try {
+    await db.query("UPDATE notes SET title = $1, isbn = $2, rating = $3, review = $4, notes = $5 WHERE id = $6",
+      [req.body.title, parseInt(req.body.isbn), req.body.rating, req.body.review, req.body.notes, id]
+    );
+  } catch (err) {
+    console.log(err.stack);
+  }
+  res.redirect(`/reviews/${id}`);
 });
 
 app.post("/delete", async (req, res) => {

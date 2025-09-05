@@ -11,15 +11,31 @@
 <body>
   <a href="/">Back to home page</a>
 
-  <h2><%= book.title %></h2>
-  <img src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg">
-  <p><%= book.rating %>/10</p>
-  <p><%= book.review %></p>
-  <h3>Book Notes</h3>
-  <p><%= book.notes %></p>
+  <h2 class="content"><%= book.title %></h2>
+  <img class="content" src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg">
+  <p class="content"><%= book.rating %>/10</p>
+  <p class="content"><%= book.review %></p>
+  <h3 class="content">Book Notes</h3>
+  <p class="content"><%= book.notes %></p>
 
+  <form method="post">
+    <input class="edit-form" name="title" placeholder="Book title" value="<%= book.title %>" hidden="true">
+    <input class="edit-form" name="isbn" placeholder="ISBN" value="<%= book.isbn %>" hidden="true">
+    <input class="edit-form" name="rating" placeholder="Book rating out of 10" value="<%= book.rating %>" hidden="true">
+    <textarea class="edit-form" name="review" placeholder="Book review" hidden="true"><%= book.review %></textarea>
+    <textarea class="edit-form" name="notes" placeholder="Book notes" hidden="true"><%= book.notes %></textarea>
+    <input class="edit-form" type="submit" value="Submit" hidden="true">
+  </form>
+
+  <button onclick="handler()">Edit book</button>
   <form action="/delete" method="post">
     <input type="submit" value="Delete book">
   </form>
+  <script>
+    function handler() {
+      document.querySelectorAll(".content").forEach((item) => item.hidden = true);
+      document.querySelectorAll(".edit-form").forEach((item) => item.hidden = false);
+    }
+  </script>
 </body>
 </html>
