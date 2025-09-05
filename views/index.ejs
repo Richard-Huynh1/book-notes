@@ -10,6 +10,11 @@
 </head>
 <body>
   <h1>Book Notes</h1>
+  <h2>Sort by</h2>
+  <a href="/?sort=newest">Newest</a>
+  <a href="/?sort=oldest">Oldest</a>
+  <a href="/?sort=best">Best</a>
+  <a href="/?sort=worst">Worst</a>
   <hr>
   <% books.forEach((book) => { %>
     <a href="/reviews/<%= book.id %>"><%= book.title %></a>
