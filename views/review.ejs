@@ -29,6 +29,7 @@
 
   <button onclick="handler()">Edit book</button>
   <form action="/delete" method="post">
+    <input name="id" type="hidden" value="<%= book.id %>">
     <input type="submit" value="Delete book">
   </form>
   <script>

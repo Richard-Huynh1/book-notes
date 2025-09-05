@@ -98,8 +98,7 @@ app.post("/reviews/:id", async (req, res) => {
 });
 
 app.post("/delete", async (req, res) => {
-  const id = parseInt(req.params.id);
-  console.log(id);
+  const id = parseInt(req.body.id);
   try {
     await db.query("DELETE FROM notes WHERE id = $1", [id]);
   } catch (err) {
