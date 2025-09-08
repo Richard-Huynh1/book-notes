@@ -7,31 +7,37 @@
   <meta name="author" content="Richard Huynh">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@400..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-  <a href="/">Back to home page</a>
+  <div id="content">
+      <a class="btn" href="/">Back to home page</a>
 
-  <h2 class="content"><%= book.title %></h2>
-  <img class="content" src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg">
-  <p class="content"><%= book.rating %>/10</p>
-  <p class="content"><%= book.review %></p>
-  <h3 class="content">Book Notes</h3>
-  <p class="content"><%= book.notes %></p>
+      <h2 class="content"><%= book.title %></h2>
+      <img class="content" src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg">
+      <p class="content"><%= book.rating %>/10</p>
+      <p class="content"><%= book.review %></p>
+      <h3 class="content">Book Notes</h3>
+      <p class="content"><%= book.notes %></p>
 
-  <form method="post">
-    <input class="edit-form" name="title" placeholder="Book title" value="<%= book.title %>" hidden="true">
-    <input class="edit-form" name="isbn" placeholder="ISBN" value="<%= book.isbn %>" hidden="true">
-    <input class="edit-form" name="rating" placeholder="Book rating out of 10" value="<%= book.rating %>" hidden="true">
-    <textarea class="edit-form" name="review" placeholder="Book review" hidden="true"><%= book.review %></textarea>
-    <textarea class="edit-form" name="notes" placeholder="Book notes" hidden="true"><%= book.notes %></textarea>
-    <input class="edit-form" type="submit" value="Submit" hidden="true">
-  </form>
+      <form method="post">
+        <input class="edit-form" name="title" style="margin-top: 30px" placeholder="Book title" value="<%= book.title %>" hidden="true">
+        <input class="edit-form" name="isbn" placeholder="ISBN" value="<%= book.isbn %>" hidden="true">
+        <input class="edit-form" name="rating" placeholder="Book rating out of 10" value="<%= book.rating %>" hidden="true">
+        <textarea class="edit-form" name="review" placeholder="Book review" hidden="true"><%= book.review %></textarea>
+        <textarea class="edit-form" name="notes" placeholder="Book notes" hidden="true"><%= book.notes %></textarea>
+        <input class="edit-form" type="submit" value="Submit" hidden="true">
+      </form>
 
-  <button onclick="handler()">Edit book</button>
-  <form action="/delete" method="post">
-    <input name="id" type="hidden" value="<%= book.id %>">
-    <input type="submit" value="Delete book">
-  </form>
+      <button class="btn" onclick="handler()">Edit book</button>
+      <form action="/delete" method="post">
+        <input name="id" type="hidden" value="<%= book.id %>">
+        <input class="btn" type="submit" value="Delete book">
+      </form>
+  </div>
   <script>
     function handler() {
       document.querySelectorAll(".content").forEach((item) => item.hidden = true);

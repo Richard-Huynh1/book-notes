@@ -7,38 +7,44 @@
   <meta name="author" content="Richard Huynh">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@400..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-  <h1>Book Notes</h1>
-  <h2>Sort by</h2>
-  <a href="/?sort=newest">Newest</a>
-  <a href="/?sort=oldest">Oldest</a>
-  <a href="/?sort=best">Best</a>
-  <a href="/?sort=worst">Worst</a>
-  <hr>
-  <% books.forEach((book) => { %>
-    <a href="/reviews/<%= book.id %>"><%= book.title %></a>
-    <img src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg">
-    <p><%= book.rating %>/10</p>
-    <p><%= book.review %></p>
-  <% }) %>
-  <form method="post">
-    <input id="title" name="title" placeholder="Book title" hidden="true">
-    <input id="isbn" name="isbn" placeholder="ISBN" hidden="true">
-    <input id="rating" name="rating" placeholder="Book rating out of 10" hidden="true">
-    <textarea id="review" name="review" placeholder="Book review" hidden="true"></textarea>
-    <textarea id="notes" name="notes" placeholder="Book notes" hidden="true"></textarea>
-    <input id="submit" type="submit" value="Submit" hidden="true">
-  </form>
-  <button id="add-btn" onclick="handler()">Add book</button>
+  <div id="content">
+    <h1>Book Notes</h1>
+    <h2>Sort by</h2>
+    <div style="margin-bottom:30px">
+      <a class="btn" href="/?sort=newest">Newest</a>
+      <a class="btn" href="/?sort=oldest">Oldest</a>
+      <a class="btn" href="/?sort=best">Best</a>
+      <a class="btn" href="/?sort=worst">Worst</a>
+    </div>
+    <hr>
+    <% books.forEach((book) => { %>
+      <a class="book-title" href="/reviews/<%= book.id %>"><%= book.title %></a><br>
+      <img src="https://covers.openlibrary.org/b/ISBN/<%= book.isbn %>-M.jpg">
+      <p><%= book.rating %>/10</p>
+      <p><%= book.review %></p>
+    <% }) %>
+    <form method="post">
+      <input class="add-book" name="title" placeholder="Book title" hidden="true">
+      <input class="add-book" name="isbn" placeholder="ISBN" hidden="true">
+      <input class="add-book" name="rating" placeholder="Book rating out of 10" hidden="true">
+      <textarea class="add-book" name="review" placeholder="Book review" hidden="true"></textarea>
+      <textarea class="add-book" name="notes" placeholder="Book notes" hidden="true"></textarea>
+      <input class="add-book btn" type="submit" value="Submit" hidden="true">
+    </form>
+    <button class="btn" id="add-btn" onclick="handler()">Add book</button>
+  </div>
   <script>
     function handler() {
-      document.getElementById("title").hidden = false;
-      document.getElementById("isbn").hidden = false;
-      document.getElementById("rating").hidden = false;
-      document.getElementById("review").hidden = false;
-      document.getElementById("notes").hidden = false;
-      document.getElementById("submit").hidden = false;
+      document.querySelectorAll(".add-book").forEach((element) => {
+        element.hidden = false;
+        element.display = "block";
+      });
       document.getElementById("add-btn").hidden = true;
     }
   </script>

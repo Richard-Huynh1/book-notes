@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #848484;
+}
+
+h1 {
+  margin-top: 10px;
+  font: 3rem "Orbitron", sans-serif;
+}
+
+h2 {
+  font: bold 2rem "Open Sans", sans-serif;
+}
+
+p {
+  font: 1rem "Tinos", serif;  
+}
+
+input, textarea {
+  font: 1rem "Tinos", serif; 
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.btn {
+  border: none;
+  width: fit-content;
+  margin-bottom: 10px;
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  background-color: royalblue;
+  border-radius: 16px;
+  color: #fff;
+  font: bold 1rem "Open Sans", sans-serif;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background-color: #3554b0;
+}
+
+.book-title {
+  color: #000;  
+  font: 1.5rem "Open Sans", sans-serif;
+  text-decoration: underline;
+}
+
+#content {
+  padding: 20px 20px;
+  background-color: #c2c2c2;
+  width: 50%;
+}
+
+@media screen and (max-width: 1000px) {
+  #content {
+    width: 100%;
+  }
+}
