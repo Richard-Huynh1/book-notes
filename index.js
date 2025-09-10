@@ -35,6 +35,42 @@ let books = [
   }
 ];
 
+function isDigit(char) {
+  if (char >= '0' && char <= '9') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function isWholeNumber(text) {
+  if (text.length === 0) return false;
+  for (let char of text) {
+    if (!isDigit(char)) return false;
+  }
+  return true;
+}
+
+function isNumber(text) {
+  if (text[0] === '-') text = text.substring(1);
+  if (text.length === 0) return false;
+  let decimal = false;
+  for (let char of text) {
+    if (char === '.' && !decimal) {
+      decimal = true;
+      continue;
+    } else if (!isDigit(char)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function isIsbn10(text) {
+  if (text.length === 10 && isWholeNumber(text)) return true;
+  return false;
+}
+
 app.get("/", async (req, res) => {
   const sort = req.query.sort;
   let result;
@@ -64,9 +100,11 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   try {
-    await db.query("INSERT INTO notes (title, isbn, rating, review, notes) VALUES ($1, $2, $3, $4, $5)",
-      [req.body.title, parseInt(req.body.isbn), parseInt(req.body.rating), req.body.review, req.body.notes]
-    )
+    if (isNumber(req.body.rating.trim()) && isIsbn10(req.body.isbn.trim())){
+      await db.query("INSERT INTO notes (title, isbn, rating, review, notes) VALUES ($1, $2, $3, $4, $5)",
+        [req.body.title.trim(), req.body.isbn.trim(), parseFloat(req.body.rating.trim()), req.body.review, req.body.notes]
+      );
+    }
   } catch (err) {
     console.log(err.stack);
   }
@@ -75,7 +113,7 @@ app.post("/", async (req, res) => {
 
 app.get("/reviews/:id", async (req, res) => {
   try {
-    const result = await db.query("SELECT * from notes");
+    const result = await db.query("SELECT * FROM notes");
     books = result.rows;
   } catch (err) {
     console.log(err.stack);
@@ -88,9 +126,11 @@ app.get("/reviews/:id", async (req, res) => {
 app.post("/reviews/:id", async (req, res) => {
   const id = parseInt(req.params.id);
   try {
-    await db.query("UPDATE notes SET title = $1, isbn = $2, rating = $3, review = $4, notes = $5 WHERE id = $6",
-      [req.body.title, parseInt(req.body.isbn), req.body.rating, req.body.review, req.body.notes, id]
-    );
+    if (isNumber(req.body.rating.trim()) && isIsbn10(req.body.isbn.trim())) {
+      await db.query("UPDATE notes SET title = $1, isbn = $2, rating = $3, review = $4, notes = $5 WHERE id = $6",
+        [req.body.title.trim(), req.body.isbn.trim(), parseFloat(req.body.rating.trim()), req.body.review, req.body.notes, id]
+      );
+    }
   } catch (err) {
     console.log(err.stack);
   }
