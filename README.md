@@ -14,16 +14,14 @@ CREATE TABLE notes (
   notes TEXT
 );
 ```
-## Things you may Have to Change
-In the index.js file, you may have to change some or all of the following:
+## Create an Environmental Variable File
+You will have to create a .env file with the following variables:
 ```
-const db = new pg.Client({
-  user: "postgres",     // May have to change the user
-  password: "post111/", // May have to change the password
-  host: "localhost",
-  port: 5432,           // May have to change the port
-  database: "books"
-});
+PG_USER="your user here"
+PG_PASSWORD="your password here"
+PG_HOST="your host here"
+PG_PORT="your port here"
+PG_DATABASE="books"
 ```
 ## How to Run the Server
 ```
