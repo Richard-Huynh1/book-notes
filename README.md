@@ -14,7 +14,7 @@ CREATE TABLE notes (
   notes TEXT
 );
 ```
-## Create an Environmental Variable File
+## Create an Environmental Variables File
 You will have to create a .env file with the following variables:
 ```
 PG_USER="your user here"
